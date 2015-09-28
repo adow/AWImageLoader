@@ -79,6 +79,7 @@ class SecondViewController : UIViewController {
             "https://static.pexels.com/photos/6710/light-fashion-hands-woman-medium.jpg",
             "https://static.pexels.com/photos/8115/suit-couple-blue-shoes-medium.jpg",
         ]
+        self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
         self.tableView.reloadData()
         NSLog("SecondviewDidLoad end")
     }
@@ -105,6 +106,9 @@ extension SecondViewController:UITableViewDataSource,UITableViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.links != nil ? self.links.count : 0
     }
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell-image") as! ImageTableViewCell
         let link = self.links[indexPath.row]
