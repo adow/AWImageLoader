@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68220CA71BB38C45009AFAB1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68220CA61BB38C45009AFAB1 /* SecondViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		68220CA91BB3C5B6009AFAB1 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68220CA81BB3C5B6009AFAB1 /* ThirdViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		68F8837B1BB2900300938941 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F8837A1BB2900300938941 /* AppDelegate.swift */; };
 		68F8837D1BB2900300938941 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F8837C1BB2900300938941 /* ViewController.swift */; };
 		68F883801BB2900300938941 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68F8837E1BB2900300938941 /* Main.storyboard */; };
 		68F883821BB2900300938941 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68F883811BB2900300938941 /* Assets.xcassets */; };
 		68F883851BB2900300938941 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68F883831BB2900300938941 /* LaunchScreen.storyboard */; };
+		68F8838D1BB2911B00938941 /* AWImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F8838C1BB2911B00938941 /* AWImageLoader.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		68220CA61BB38C45009AFAB1 /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		68220CA81BB3C5B6009AFAB1 /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		68F883771BB2900300938941 /* AWImageLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AWImageLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68F8837A1BB2900300938941 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68F8837C1BB2900300938941 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,7 @@
 		68F883811BB2900300938941 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68F883841BB2900300938941 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68F883861BB2900300938941 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68F8838C1BB2911B00938941 /* AWImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,9 @@
 			children = (
 				68F8837A1BB2900300938941 /* AppDelegate.swift */,
 				68F8837C1BB2900300938941 /* ViewController.swift */,
+				68220CA61BB38C45009AFAB1 /* SecondViewController.swift */,
+				68220CA81BB3C5B6009AFAB1 /* ThirdViewController.swift */,
+				68F8838C1BB2911B00938941 /* AWImageLoader.swift */,
 				68F8837E1BB2900300938941 /* Main.storyboard */,
 				68F883811BB2900300938941 /* Assets.xcassets */,
 				68F883831BB2900300938941 /* LaunchScreen.storyboard */,
@@ -134,6 +143,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68220CA71BB38C45009AFAB1 /* SecondViewController.swift in Sources */,
+				68F8838D1BB2911B00938941 /* AWImageLoader.swift in Sources */,
+				68220CA91BB3C5B6009AFAB1 /* ThirdViewController.swift in Sources */,
 				68F8837D1BB2900300938941 /* ViewController.swift in Sources */,
 				68F8837B1BB2900300938941 /* AppDelegate.swift in Sources */,
 			);
@@ -283,6 +295,7 @@
 				68F8838B1BB2900300938941 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
