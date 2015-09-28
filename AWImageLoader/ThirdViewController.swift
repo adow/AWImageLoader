@@ -29,17 +29,17 @@ class ThirdViewController:UIViewController {
 //            self?.imageView_3.image = image
 //            NSLog("image 3 done")
 //        }
-        let f = aw_download_image_2(url)
-        f { [weak self](image) -> () in
+        let f = aw_download_image_c(url)
+        f { [weak self](image,url) -> () in
             self?.imageView_1.image = image
             NSLog("image 1 done")
         }
-        f { [weak self](image) -> () in
+        f { [weak self](image,url) -> () in
             self?.imageView_2.image = image
             NSLog("image 2 done")
         }
         aw_download_image(NSURL(string: "https://cdn.v2ex.co/site/logo@2x.png?m=1346064962")!) {
-            [weak self](image) -> () in
+            [weak self](image,url) -> () in
             self?.imageView_3.image = image
             NSLog("image 3 done")
         }

@@ -11,7 +11,7 @@ import UIKit
 
 private let _sharedLoader : AWImageLoader = AWImageLoader()
 
-typealias AWImageLoaderCallback = (UIImage)->()
+typealias AWImageLoaderCallback = (UIImage,NSURL)->()
 typealias AWImageLoaderCallbackList = [AWImageLoaderCallback]
 
 class AWImageLoader :NSObject{
@@ -52,7 +52,7 @@ extension AWImageLoader{
     private func removeFetchKey(key:String){
         dispatch_barrier_sync(fetchQueue) { () -> Void in
             self.fetchList.removeValueForKey(key)
-            NSLog("remove fetch:%@",key)
+//            NSLog("remove fetch:%@",key)
         }
     }
     /// 下载
@@ -60,8 +60,8 @@ extension AWImageLoader{
         let key = url.absoluteString
         /// 先从 NSCache 中获取图片
         if let image = self.memoryCache.objectForKey(key) as? UIImage {
-            NSLog("image from memory cache:%@",key)
-            completionBlock(image)
+//            NSLog("image from memory cache:%@",key)
+            completionBlock(image,url)
             return
         }
         let request = NSMutableURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.UseProtocolCachePolicy, timeoutInterval: 10.0)
@@ -69,21 +69,23 @@ extension AWImageLoader{
         /// 从url获取图片
         if let cache_result = NSURLCache.sharedURLCache().cachedResponseForRequest(request) {
             if let image = UIImage(data: cache_result.data) {
-                NSLog("image from urlcache:%@",key)
-                completionBlock(image)
+                /// 写入 NSCache
+                self.memoryCache.setObject(image, forKey: key)
+//                NSLog("image from urlcache:%@",key)
+                completionBlock(image,url)
                 return
             }
         }
         /// 使用 url 下载图片
         /// 先确保 url 路径不会倍重复下载,如果正在下载的，会针对这个 url 添加一个回调
         if var callback_list = self.fetchList[key] {
-            NSLog("downloading: %@",key)
+//            NSLog("downloading: %@",key)
             callback_list.append(completionBlock)
             self.appendFetchKey(key, completionBlockList: callback_list)
             return
         }
         else{
-            NSLog("append key:%@",key)
+//            NSLog("append key:%@",key)
             let callback_list  = [completionBlock,]
             self.appendFetchKey(key, completionBlockList: callback_list)
         }
@@ -98,8 +100,9 @@ extension AWImageLoader{
                     self.memoryCache.setObject(image, forKey: key)
 //                    NSThread.sleepForTimeInterval(3.0)
                     dispatch_sync(dispatch_get_main_queue(), { () -> Void in
-                        for f in callback_list {
-                            f(image)
+                        for (_,f) in callback_list.enumerate() {
+//                            NSLog("callback:%d,%@",i,url)
+                            f(image,url)
                         }    
                     })
                     
@@ -113,8 +116,9 @@ extension AWImageLoader{
     }
 }
 extension AWImageLoader {
-    func clearMemoryCache(){
+    func clearCache(){
         self.memoryCache.removeAllObjects()
+        NSURLCache.sharedURLCache().removeAllCachedResponses()
     }
 }
 extension AWImageLoader:NSURLSessionDelegate,NSURLSessionDataDelegate {
@@ -126,6 +130,6 @@ extension AWImageLoader:NSURLSessionDelegate,NSURLSessionDataDelegate {
 func aw_download_image(url:NSURL!, completionBlock:AWImageLoaderCallback){
     AWImageLoader.sharedLoader.downloadImage(url, onSucess: completionBlock)
 }
-func aw_download_image_2(url:NSURL!)(completionBlock:AWImageLoaderCallback){
+func aw_download_image_c(url:NSURL!)(completionBlock:AWImageLoaderCallback){
     AWImageLoader.sharedLoader.downloadImage(url, onSucess: completionBlock)
 }
