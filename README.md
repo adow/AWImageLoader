@@ -6,5 +6,5 @@
 * UIImageView+AWImageLoader.swift;
 
 	cell.showImageView.aw_downloadImageURL(NSURL(string: link)!) { (image, url) -> () in
-            
-        }
+	            
+        	}
